@@ -1,0 +1,33 @@
+server:
+  port: 18180
+eurkaserver:
+  port: 19527
+  ip: 180.76.242.6
+myserver:
+  ip: localhost
+spring:
+  application:
+    name: test-client2
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eurkaserver.ip}:${eurkaserver.port}/eureka/
+  instance:
+    prefer-ip-address: true
+    #baidu 180.76.242.6
+    #ali 39.99.43.45
+    #tencent 110.42.175.90
+    ip-address: ${myserver.ip}
+    instance-id: ${myserver.ip}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "*"

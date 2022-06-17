@@ -1,0 +1,13 @@
+feign:
+  client:
+    config:
+      default:
+        read-timeout: 3000
+        connect-timeout: 3000
+  circuitbreaker:
+    enabled: true
+  metrics:
+    enabled: true
+hystrix:
+  metrics:
+    enabled: true

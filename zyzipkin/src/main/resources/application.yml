@@ -1,0 +1,42 @@
+server:
+  port: 18084
+
+eurkaserver:
+  port: 19527
+  ip: 180.76.242.6
+myserver:
+  ip: localhost
+
+spring:
+  application:
+    name: zy-zipserver
+  zipkin:
+    base-url: http://127.0.0.1:18084
+  sleuth:
+    sampler:
+      probability: 1.0
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: ${myserver.ip}
+    instance-id: ${myserver.ip}:${spring.application.name}:${server.port}
+    ip-address: ${myserver.ip}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${eurkaserver.ip}:${eurkaserver.port}/eureka/
+
+management:
+  metrics:
+    web:
+     server:
+       auto-time-requests: false
+
+
+
+
+
+
+
+

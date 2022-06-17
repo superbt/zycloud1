@@ -1,0 +1,29 @@
+server:
+  port: 18085
+eurkaserver:
+  port: 19527
+  ip: 180.76.242.6
+myserver:
+  ip: localhost
+spring:
+  application:
+    name: zy-hystrix-dashboard-turbine
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eurkaserver.ip}:${eurkaserver.port}/eureka/
+  instance:
+    prefer-ip-address: true
+    #百度 180.76.242.6
+    #阿里 39.99.43.45
+    #腾讯 110.42.175.90
+    ip-address: ${myserver.ip}
+    instance-id: ${myserver.ip}
+
+
+turbine:
+  app-config: test-client2
+  aggregator:
+    cluster-config: default
+  cluster-name-expression: new String("default")
+

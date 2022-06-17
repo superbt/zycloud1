@@ -1,0 +1,39 @@
+server:
+  port: 18082
+myserver:
+  port: 19527
+  ip: 180.76.242.6
+
+spring:
+  application:
+    name: zy-gateway
+  zipkin:
+    base-url: http://180.76.242.6:18084
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1.0
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: zy-test-client
+          uri: lb://test-client1
+          #uri: http://localhost:18080
+          #uri: http://httpbin.org
+          predicates:
+            - Path=/test/*
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${myserver.ip}:${myserver.port}/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+
+
+

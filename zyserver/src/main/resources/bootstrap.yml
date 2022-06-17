@@ -1,0 +1,15 @@
+feign:
+  circuitbreaker:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "*"
