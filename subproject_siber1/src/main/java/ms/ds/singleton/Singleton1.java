@@ -7,7 +7,7 @@ public class Singleton1 {
 }
 
 class LazySingleton{
-    public static LazySingleton lazySingleton ;
+    public static  volatile   LazySingleton lazySingleton ;
 
     private LazySingleton() {
     }
@@ -25,3 +25,7 @@ class LazySingleton{
         return lazySingleton ;
     }
 }
+
+
+
+
