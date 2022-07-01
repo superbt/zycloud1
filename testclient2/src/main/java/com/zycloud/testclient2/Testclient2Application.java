@@ -22,7 +22,7 @@ public class Testclient2Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Testclient2Application.class, args);
-        System.out.println("===testclient2==启动");
+        System.out.println("===testclient2==启动===");
     }
 
     @LoadBalanced

@@ -11,6 +11,12 @@ public class EurekaserverApplication {
     public static void main(String[] args) {
         SpringApplication.run(EurekaserverApplication.class, args);
         System.out.println("=====Eurek启动了");
+
+        /**
+         *
+         * zs  21k 2 6.1  21*12
+         *
+         */
     }
 
 }
