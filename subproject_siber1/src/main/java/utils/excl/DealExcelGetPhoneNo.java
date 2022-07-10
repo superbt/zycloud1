@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DealExcelGetPhoneNo {
-    static String filePath = "C:\\Users\\86182\\Desktop\\订单资料";
-    static String outFilePath="C:\\Users\\86182\\Desktop\\订单资料_txt\\";
+    static String filePath = "C:\\Users\\86182\\Desktop\\订单";
+    static String outFilePath="C:\\Users\\86182\\Desktop\\订单_txt\\";
 
     public static void main(String[] args) throws  Exception {
       DealExcelGetPhoneNo d = new DealExcelGetPhoneNo();
@@ -38,6 +38,10 @@ public class DealExcelGetPhoneNo {
 
     public static void dealExcelPhoneNum(File file) throws Exception{
         String fileName = file.getName();
+        System.out.println(fileName);
+        if(fileName.endsWith(".csv")){
+            return;
+        }
         fileName = fileName.replace(".xlsx",".txt");
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook sheets = new XSSFWorkbook(inputStream);
@@ -92,7 +96,8 @@ public class DealExcelGetPhoneNo {
             }else{
                 continue;
             }
-            if(str==null||"null".equals(null)||"".equals(str))
+
+            if(str==null||"null".equals(null)||"".equals(str)||str.indexOf("电话")>-1||str.indexOf("手机")>-1) //
                 continue;
             ps.println(str);
         }
